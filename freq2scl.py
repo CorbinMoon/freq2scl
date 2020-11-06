@@ -45,7 +45,6 @@ class Freq2Scl(object):
         self.__alpharange = alpharange
 
     def plot(self):
-        plt.figure(figsize=(7, 3))
         plt.plot(np.linspace(1, self.__alpharange,
                              len(self.__data)), self.__data)
         plt.xlim(1, self.__alpharange)
