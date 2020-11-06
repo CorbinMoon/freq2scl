@@ -17,6 +17,12 @@ class Freq2Scl(object):
 
     @classmethod
     def __dis(cls, f, amp):
+        """
+
+        :param f: vector of frequencies
+        :param amp: vector of amplitudes
+        :return: sensory dissonance btw. two tones
+        """
         idx = np.argsort(f)
         s_amp = np.asarray(amp)[idx]
         s_f = np.asarray(f)[idx]
@@ -44,6 +50,13 @@ class Freq2Scl(object):
         return self.__data
 
     def calc_dis(self, f, amp, n=2000, alpharange=2.1):
+        """
+
+        :param f: vector of frequencies
+        :param amp: vector of amplitudes
+        :param n: number of samples
+        :param alpharange: alpha range across x-axis
+        """
         if alpharange <= 1:
             raise Exception("alpharange must be greater than one")
 
@@ -66,6 +79,10 @@ class Freq2Scl(object):
         plt.show()
 
     def write_to_scl(self, path):
+        """
+
+        :param path: path of generated scala scale file
+        """
         ratios = self.__find_min()
         cents = 1200 * np.log(ratios) / np.log(2)
         delim = '\\' if '\\' in path else '/'
